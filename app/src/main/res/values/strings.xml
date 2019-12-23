@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Suggestme</string>
+
+    <string name="login_etMail_hint">Email</string>
+    <string name="login_etPassword_hint">Password</string>
+    <string name="login_btLogin_text">Login</string>
+    <string name="login_bt_succes">Login Succes</string>
+    <string name="login_bt_error">Login Failed</string>
+    <string name="login_bt_idle">Login</string>
+</resources>
