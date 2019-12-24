@@ -1,10 +1,9 @@
 package com.iy.suggestme.di.components
 
+import com.iy.suggestme.base.BaseActivity
 import com.iy.suggestme.di.modules.NetworkModule
-import com.iy.suggestme.ui.login.LoginActivity
 import com.iy.suggestme.ui.login.LoginActivityViewModel
-import com.iy.suggestme.ui.photos.PhotosItemViewModel
-import com.iy.suggestme.ui.photos.MainActivityViewModel
+import com.iy.suggestme.ui.login.RegisterActivityViewModel
 import dagger.Component
 import javax.inject.Singleton
 
@@ -12,9 +11,9 @@ import javax.inject.Singleton
 @Component(modules = [(NetworkModule::class)])
 interface ViewModelInjector {
 
-    fun inject(photosItemViewModel: PhotosItemViewModel)
-    fun inject(mainActivityViewModel: MainActivityViewModel)
     fun inject(loginActivity: LoginActivityViewModel)
+    fun inject(registerActivityViewModel: RegisterActivityViewModel)
+
 
     @Component.Builder
     interface Builder {

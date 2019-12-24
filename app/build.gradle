@@ -3,13 +3,19 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'realm-android'
+
 
 android {
+    realm {
+        syncEnabled = true
+    }
     compileOptions {
         targetCompatibility = "8"
         sourceCompatibility = "8"
     }
     compileSdkVersion 28
+
 
     dataBinding {
         enabled = true
@@ -17,6 +23,7 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
+        multiDexEnabled true
         applicationId "com.iy.suggestme"
         minSdkVersion 16
         targetSdkVersion 29
@@ -47,6 +54,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'com.android.support:multidex:1.0.3'
 
     // Support Design
     implementation "com.android.support:design:$android_support_version"
@@ -85,4 +93,18 @@ dependencies {
 
     //Progress Button
     implementation 'br.com.simplepass:loading-button-android:2.2.0'
+
+    //RxFirebase
+    implementation 'com.github.FrangSierra:RxFirebase:1.5.6'
+
+    //Realm
+    implementation 'io.realm:android-adapters:3.1.0'
+
+    //RxFirebase
+    implementation 'com.github.FrangSierra:RxFirebase:1.5.6'
+
+    //https://github.com/81813780/AVLoadingIndicatorView
+    implementation 'com.wang.avi:library:2.1.3'
+
+
 }

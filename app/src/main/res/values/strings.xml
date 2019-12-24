@@ -7,4 +7,5 @@
     <string name="login_bt_succes">Login Succes</string>
     <string name="login_bt_error">Login Failed</string>
     <string name="login_bt_idle">Login</string>
+    <string name="register">Register</string>
 </resources>

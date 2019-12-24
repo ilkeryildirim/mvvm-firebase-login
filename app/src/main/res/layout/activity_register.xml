@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.iy.suggestme.ui.login.LoginActivityViewModel" />
+            type="com.iy.suggestme.ui.login.RegisterActivityViewModel" />
     </data>
 
     <LinearLayout
@@ -46,16 +46,6 @@
 
             </EditText>
 
-            <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
-
-                android:id="@+id/btLogin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="64dp"
-                android:layout_marginRight="64dp"
-                android:onClick="@{viewModel.loginClickListener}"
-                android:background="@drawable/login_bt_background"
-                android:text="@string/login_bt_idle" />
 
 
             <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
@@ -72,7 +62,7 @@
 
 
         </LinearLayout>
-        </LinearLayout>
+    </LinearLayout>
 
-    </layout>
+</layout>
 
