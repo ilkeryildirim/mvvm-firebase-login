@@ -49,16 +49,10 @@ class LoginActivityViewModel : BaseViewModel<Any?>() {
                     }else errorMessage.value=task.exception?.localizedMessage
                 }
         }else{
-            errorMessage.value="Requered > 5"
+            errorMessage.value="Needs > 6"
         }
     }
 
-    private fun showLoading() {
-        loadingVisibility.value = View.VISIBLE
-    }
 
-    private fun hideLoading() {
-        loadingVisibility.value = View.INVISIBLE
-    }
 }
 

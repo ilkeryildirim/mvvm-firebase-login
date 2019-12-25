@@ -1,4 +1,4 @@
-package com.iy.suggestme.ui.login
+package com.iy.suggestme.ui.register
 
 
 import android.annotation.SuppressLint
@@ -17,7 +17,6 @@ class RegisterActivityViewModel : BaseViewModel<Any?>() {
 
 
     val registerClickListener=View.OnClickListener {
-
         tryRegister()
     }
 
@@ -45,7 +44,7 @@ class RegisterActivityViewModel : BaseViewModel<Any?>() {
                     }
                 }
         }else{
-            errorMessage.value="Requered >6"
+            errorMessage.value="Requiered >6"
         }
     }
 

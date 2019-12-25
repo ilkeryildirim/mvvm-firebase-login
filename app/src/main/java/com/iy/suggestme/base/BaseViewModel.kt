@@ -7,6 +7,7 @@ import com.iy.suggestme.di.components.DaggerViewModelInjector
 import com.iy.suggestme.di.components.ViewModelInjector
 import com.iy.suggestme.di.modules.NetworkModule
 import com.iy.suggestme.ui.login.LoginActivityViewModel
+import com.iy.suggestme.ui.register.RegisterActivityViewModel
 
 
 abstract class BaseViewModel<T> : ViewModel() {
@@ -37,6 +38,7 @@ abstract class BaseViewModel<T> : ViewModel() {
     private fun inject() {
         when (this) {
             is LoginActivityViewModel -> injector.inject(this)
+            is RegisterActivityViewModel -> injector.inject(this)
         }
     }
 }

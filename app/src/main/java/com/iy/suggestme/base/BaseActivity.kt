@@ -1,36 +1,59 @@
 package com.iy.suggestme.base
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.lifecycle.ViewModelProviders
-import com.iy.suggestme.di.ViewModelFactory
-import com.iy.suggestme.ui.login.LoginActivityViewModel
+import androidx.lifecycle.Observer
+import com.google.android.material.snackbar.Snackbar
 
 
 abstract class BaseActivity<B : ViewDataBinding, T : BaseViewModel<*>> :
     AppCompatActivity() {
-    private lateinit var dataBinding: B
-    private lateinit var baseViewModel: T
+    lateinit var baseDataBinding: B
+    lateinit var baseViewModel: T
+    private lateinit var errorSnackbar: Snackbar
 
-
-    abstract val layoutId:Int
+    protected fun bindView(layoutId: Int) {
+        baseDataBinding = DataBindingUtil.setContentView(this, layoutId)
+    }
 
     abstract fun initVariables()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
-        dataBinding = DataBindingUtil.setContentView(this, layoutId)
-        baseViewModel = ViewModelProviders.of(this, ViewModelFactory(this))
-            .get(T::class.java)
         initVariables()
+        observeViewModel()
+
+    }
+
+    open fun observeViewModel() {
+        baseViewModel.errorMessage.observe(this, Observer { errorMessage ->
+            showError(errorMessage)
+        })
+        baseViewModel.loadingVisibility.observe(this, Observer { visibility ->
+            if (visibility == View.VISIBLE) showLoading() else hideLoading()
+        })
+    }
+
+    private fun showError(error: String) {
+        errorSnackbar = Snackbar.make(baseDataBinding.root, error, Snackbar.LENGTH_LONG)
+        errorSnackbar.show()
     }
 
     override fun onDestroy() {
         baseViewModel.detachView()
         super.onDestroy()
+    }
+
+
+    private fun hideLoading() {
+
+    }
+
+    private fun showLoading() {
+
     }
 }

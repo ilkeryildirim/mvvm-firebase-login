@@ -6,6 +6,10 @@
     <string name="login_btLogin_text">Login</string>
     <string name="login_bt_succes">Login Succes</string>
     <string name="login_bt_error">Login Failed</string>
-    <string name="login_bt_idle">Login</string>
+    <string name="login_bt_idle">LOGIN</string>
     <string name="register">Register</string>
+
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>
