@@ -1,12 +1,18 @@
 package com.iy.suggestme.base
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
+import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
+import com.iy.suggestme.R
+
 
 
 abstract class BaseActivity<B : ViewDataBinding, T : BaseViewModel<*>> :
@@ -14,6 +20,7 @@ abstract class BaseActivity<B : ViewDataBinding, T : BaseViewModel<*>> :
     lateinit var baseDataBinding: B
     lateinit var baseViewModel: T
     private lateinit var errorSnackbar: Snackbar
+    private lateinit var progressDialog:Dialog
 
     protected fun bindView(layoutId: Int) {
         baseDataBinding = DataBindingUtil.setContentView(this, layoutId)
@@ -23,9 +30,21 @@ abstract class BaseActivity<B : ViewDataBinding, T : BaseViewModel<*>> :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         initVariables()
         observeViewModel()
+
+        progressDialog=Dialog(this)
+        progressDialog.apply {
+            window?.let {
+                it.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                it.requestFeature(Window.FEATURE_NO_TITLE)
+            }
+            setContentView(R.layout.progress_dialog)
+            setCancelable(true)
+            setCanceledOnTouchOutside(false)
+        }
+
+
 
     }
 
@@ -51,9 +70,12 @@ abstract class BaseActivity<B : ViewDataBinding, T : BaseViewModel<*>> :
 
     private fun hideLoading() {
 
+        progressDialog.dismiss()
     }
 
     private fun showLoading() {
+
+        progressDialog.show()
 
     }
 }

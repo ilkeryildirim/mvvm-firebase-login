@@ -6,21 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.MainActivity">
 
+
     <FrameLayout
-        android:id="@+id/mainContainer"
-        android:layout_width="0dp"
+        android:id="@+id/nav_host_container"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_weight="1"
         app:layout_constraintBottom_toTopOf="@+id/bottomBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <me.ibrahimsn.lib.SmoothBottomBar
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/bottom_menu_background"
         android:id="@+id/bottomBar"
         app:itemPadding="8dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        app:backgroundColor="@color/themeColor1"
+        app:backgroundColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

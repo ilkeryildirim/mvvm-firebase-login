@@ -22,6 +22,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginActivityViewModel>
 
     override fun initVariables() {
         baseViewModel = LoginActivityViewModel()
+        baseViewModel.apply {  }
         baseViewModel.attachView(this)
         baseViewModel= ViewModelProviders.of(this, ViewModelFactory(this))
             .get(LoginActivityViewModel::class.java)

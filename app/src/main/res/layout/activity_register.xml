@@ -77,7 +77,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+                    <Button
 
                         android:id="@+id/btLogin"
                         android:layout_width="wrap_content"

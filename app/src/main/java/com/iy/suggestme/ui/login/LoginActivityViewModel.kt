@@ -13,17 +13,17 @@ import com.iy.suggestme.base.BaseViewModel
 class LoginActivityViewModel : BaseViewModel<Any?>() {
 
 
-    val registerButtonClicked=MutableLiveData<Boolean>()
-    var mail :String=""
-    var password :String=""
+    val registerButtonClicked = MutableLiveData<Boolean>()
+    var mail: String = ""
+    var password: String = ""
 
 
     val loginClickListener = View.OnClickListener {
         tryLogin()
     }
 
-    val registerClickListener=View.OnClickListener {
-        registerButtonClicked.value=true
+    val registerClickListener = View.OnClickListener {
+        registerButtonClicked.value = true
     }
 
 
@@ -35,21 +35,31 @@ class LoginActivityViewModel : BaseViewModel<Any?>() {
         password = s.toString()
     }
 
+    private fun showLoading() {
+        loadingVisibility.value = View.VISIBLE
+    }
+
+    private fun hideLoading() {
+        loadingVisibility.value = View.INVISIBLE
+    }
+
     @SuppressLint("CheckResult")
     fun tryLogin() {
-        if (password.length > 5 && mail.length>5) {
+        showLoading()
+        if (password.length > 5 && mail.length > 5) {
             FirebaseAuth.getInstance().signInWithEmailAndPassword(
                 mail,
                 password
             ).addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        // Sign in success, update UI with the signed-in user's information
-                        Log.d(TAG, "signInWithEmail:success")
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    Log.d(TAG, "signInWithEmail:success")
 
-                    }else errorMessage.value=task.exception?.localizedMessage
-                }
-        }else{
-            errorMessage.value="Needs > 6"
+                } else errorMessage.value = task.exception?.localizedMessage
+                hideLoading()
+            }
+        } else {
+            errorMessage.value = "Needs > 6"
         }
     }
 

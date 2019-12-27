@@ -17,7 +17,6 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,7 +41,9 @@
                     android:afterTextChanged="@{(editable)->viewModel.afterMailChange(editable)}"
                     android:background="@drawable/login_et_background"
                     android:hint="@string/login_etMail_hint"
-                    android:padding="8dp">
+                    android:inputType="textEmailAddress"
+                    android:padding="8dp"
+                    android:textColor="@color/themeColor1">
 
                 </EditText>
 
@@ -54,6 +55,7 @@
                     android:afterTextChanged="@{(editable)->viewModel.afterPasswordChange(editable)}"
                     android:background="@drawable/login_et_background"
                     android:hint="@string/login_etPassword_hint"
+                    android:inputType="textPassword"
                     android:padding="8dp"
                     android:textColor="@color/themeColor1">
 
@@ -64,7 +66,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+                    <Button
 
                         android:id="@+id/btLogin"
                         android:layout_width="wrap_content"
@@ -77,12 +79,12 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:fontFamily="@font/advent_pro_light"
                         android:id="@+id/btRegister"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginLeft="16dp"
+                        android:fontFamily="@font/advent_pro_light"
                         android:onClick="@{viewModel.registerClickListener}"
                         android:text="@string/register"
                         app:layout_constraintBottom_toBottomOf="@+id/btLogin"
@@ -110,19 +112,31 @@
 
 
         <TextView
-            android:fontFamily="@font/advent_pro_light"
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginLeft="24dp"
+            android:fontFamily="@font/advent_pro_light"
             android:text="@string/login_btLogin_text"
             android:textAllCaps="false"
             android:textColor="@color/themeColor1"
             android:textSize="48sp"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+
+            android:layout_width="132dp"
+            android:layout_height="178dp"
+            android:layout_weight="1"
+            android:scaleType="fitXY"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/cornerdesignbottom" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </layout>
+</layout>
 
